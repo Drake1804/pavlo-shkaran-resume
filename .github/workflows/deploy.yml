@@ -20,13 +20,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'pnpm'
+        # Removed the cache field to avoid requiring a lock file
 
       - name: Extract zipped source
         run: unzip -o pavlo-shkaran-resume.zip -d .
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build and export
         run: pnpm build && pnpm export
